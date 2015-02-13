@@ -6,7 +6,7 @@ var EditorStage = function(){};
 EditorStage.prototype.constructor = EditorStage;
 var editorStage = module.exports = new EditorStage();
 
-EditorStage.prototype.init = function(config, wrapper){debugger;
+EditorStage.prototype.init = function(config, wrapper){
     this.$wrapper = wrapper || document.body;
     registerNotificationInterests();
     return view.init(this);

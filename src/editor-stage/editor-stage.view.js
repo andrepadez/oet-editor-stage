@@ -11,7 +11,7 @@ var editorStageView = module.exports = new EditorStageView();
 EditorStageView.prototype.init = function(controller){
     $scope = controller;
     return this.render($scope.$wrapper)
-        .then(registerDOM)
+        .then(registerDOM.bind(null, $scope.$wrapper))
         .then(registerEvents);
 };
 
@@ -31,7 +31,7 @@ EditorStageView.prototype.handleBackgroundNotification = function(data){
 var registerDOM = function(wrapper){
     $scope.DOM = {};
     $scope.DOM.wrapper = wrapper;
-    $scope.DOM.editor = document.querySelector('.editor-container');
+    $scope.DOM.editor = document.querySelector('.editor-stage'); console.log($scope.DOM)
 };
 
 var registerEvents = function(){
