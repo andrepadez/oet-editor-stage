@@ -2,7 +2,7 @@
   "name": "oet-editor-stage",
   "version": "0.0.0",
   "description": "Base class for the stage of any editor",
-  "main": "Gruntfile.js",
+  "main": "src/editor-stage/editor-stage.controller.js",
   "scripts": {
     "test": "grunt test"
   },
