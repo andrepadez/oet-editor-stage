@@ -24,6 +24,6 @@ module.exports = {
         if( !fs.existsSync(scssPath) ) { return; }
         includesSCSS.push( '@import "'+scssPath+'";' );
     });
-
+    includesSCSS.push('@import "./css/main.scss";');
     fs.writeFileSync(globals.config.project.root+'layout.scss', includesSCSS.join('\n'), {encoding: 'utf8'});
 })();
