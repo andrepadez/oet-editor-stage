@@ -10,9 +10,9 @@ var editorStageView = module.exports = new EditorStageView();
 
 EditorStageView.prototype.init = function(controller){
     $scope = controller;
-    return this.render($scope.$wrapper)
-        .then(registerDOM.bind(null, $scope.$wrapper))
-        .then(registerEvents);
+    return this.render( $scope.$wrapper )
+        .then( registerDOM.bind(null, $scope.$wrapper) )
+        .then( registerBehaviour );
 };
 
 EditorStageView.prototype.render = function(wrapper){
@@ -31,9 +31,9 @@ EditorStageView.prototype.handleBackgroundNotification = function(data){
 var registerDOM = function(wrapper){
     $scope.DOM = {};
     $scope.DOM.wrapper = wrapper;
-    $scope.DOM.editor = document.querySelector('.editor-stage'); console.log($scope.DOM)
+    $scope.DOM.editor = document.querySelector('.editor-stage');
 };
 
-var registerEvents = function(){
+var registerBehaviour = function(){
     
 };
