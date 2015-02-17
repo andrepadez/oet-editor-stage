@@ -1,3 +1,11 @@
+var fs = require('fs');
+var path = require('path');
+var grunt = require('grunt');
+var globals = require('../globals');
+var pkg = grunt.file.readJSON('./package.json');
+
+var modulesViewConfig = { files: [] };
+
 module.exports = {
     html: {
         files: [
@@ -32,5 +40,21 @@ module.exports = {
                 dest: '<%= config.target.dev %>'
             }
         ]
-    }
+    }, 
+    modulesViews: modulesViewConfig
 };
+
+(function createModulesViewsCopyTask(){
+    var modules = Object.keys(pkg.devDependencies).forEach(function(dependency){
+        if(dependency.indexOf('oet') === -1){ return; };
+
+        var viewsPath = path.join('node_modules', dependency, 'src', 'views');
+        if( !fs.existsSync(viewsPath) ) { return; }
+        modulesViewConfig.files.push({
+            expand: true,
+            cwd: viewsPath,
+            src: ['**/*.html'],
+            dest: 'dist/dev/views/'
+        });
+    });
+})();
